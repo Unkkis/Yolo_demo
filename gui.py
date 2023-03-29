@@ -88,6 +88,7 @@ class Ui_MainWindow(QWidget):
         self.pictureArea.setFrameShape(QtWidgets.QFrame.Shape.Panel)
         self.pictureArea.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignTop)
         self.pictureArea.setObjectName("pictureArea")
+        self.pictureArea.setScaledContents(True)
 
         #Area for object list
         self.objectsFound = QtWidgets.QLabel(parent=self.centralwidget)

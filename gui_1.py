@@ -93,6 +93,7 @@ class Ui_MainWindow(QWidget):
 
         #Area for webcam picture
         self.pictureArea = QtWidgets.QLabel(parent=self.centralwidget)
+
         self.pictureArea.setGeometry(QtCore.QRect(10, 80, 721, 621))
         self.pictureArea.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.ForbiddenCursor))
         self.pictureArea.setFrameShape(QtWidgets.QFrame.Shape.Panel)
@@ -100,6 +101,7 @@ class Ui_MainWindow(QWidget):
         self.pictureArea.setObjectName("pictureArea")
         self.th = Thread(self)
         self.th.changePixmap.connect(self.pictureArea.setPixmap)
+        self.pictureArea.setScaledContents(True)
 
         #Area for object list
         self.objectsFound = QtWidgets.QLabel(parent=self.centralwidget)
