@@ -10,8 +10,7 @@ confidence_score = 0.5
 
 # This script is for capturing video and running YOLO
 def run_yolo(model):
-    # https://docs.opencv.org/4.x/dd/d43/tutorial_py_video_display.html
-    # https://docs.ultralytics.com/usage/python/
+
 
     model = YOLO(model)
 
