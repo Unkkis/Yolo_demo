@@ -1,5 +1,5 @@
 
-from PySide6.QtCore import Slot, QThread, Signal
+from PySide6.QtCore import Slot, QThread, Signal, Qt
 from PySide6.QtGui import QPixmap, QImage
 
 from ultralytics import YOLO
@@ -10,11 +10,13 @@ from misc import *
 class Worker(QThread):
     changePixmap = Signal(QPixmap)
 
-    def __init__(self, model, parent=None):
+    def __init__(self, model, source, parent=None):
         QThread.__init__(self, parent=parent)
         self.yolo_is_running = True
         self.model = model
-        print(self.model)
+        self.source = source
+        self.results = []
+        print("model: ", model, "Sourde: ", source)
 
     @Slot() 
     def run(self):
@@ -22,9 +24,12 @@ class Worker(QThread):
     # https://docs.ultralytics.com/usage/python/
 
         model = YOLO(self.model)
-
+        source = self.source
+        
+        if source == "Webcam":
+            source = 0 
         #Choose capture device. 0 is the default for webcam.
-        cap = cv2.VideoCapture(0)
+        cap = cv2.VideoCapture(source)
         if not cap.isOpened():
             print("Cannot open camera")
             exit()
@@ -48,8 +53,9 @@ class Worker(QThread):
                 convertToQtFormat = QImage(rgbImage.data, rgbImage.shape[1], rgbImage.shape[0], QImage.Format.Format_RGB888)
                 convertToQtFormat = QPixmap.fromImage(convertToQtFormat)
 
-                p = convertToQtFormat.scaled(640, 480)
+                p = convertToQtFormat.scaled(640, 480, Qt.KeepAspectRatio)
                 self.changePixmap.emit(p)
+                self.results = results
                 
                 #to exit with q-key or Stop button
                 if cv2.waitKey(25) & 0xFF == ord('q'): break
@@ -60,13 +66,12 @@ class Worker(QThread):
         cap.release()
         cv2.destroyAllWindows()
 
-        img = QPixmap("./image.jpeg")
-        p = img.scaled(640, 480)
+        img = QPixmap("./kampus.jpg")
+        p = img.scaled(640, 480, Qt.KeepAspectRatio)
         self.changePixmap.emit(p)
         self.yolo_is_running = True
     
     @Slot()
     def stop(self):
-        print("täällä threadissa stoppia painettu")
         self.yolo_is_running = False
         self.wait()

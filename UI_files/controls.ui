@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>200</width>
-    <height>250</height>
+    <height>304</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -19,36 +19,6 @@
   <property name="windowTitle">
    <string>Controls</string>
   </property>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>20</y>
-     <width>121</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>10</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>Choose Model</string>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="modelListBox">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>50</y>
-     <width>141</width>
-     <height>20</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QPushButton" name="stopButton">
    <property name="geometry">
     <rect>
@@ -61,7 +31,6 @@
    <property name="font">
     <font>
      <pointsize>16</pointsize>
-     <weight>75</weight>
      <bold>true</bold>
     </font>
    </property>
@@ -81,7 +50,6 @@
    <property name="font">
     <font>
      <pointsize>16</pointsize>
-     <weight>75</weight>
      <bold>true</bold>
     </font>
    </property>
@@ -95,7 +63,7 @@
      <x>0</x>
      <y>0</y>
      <width>200</width>
-     <height>251</height>
+     <height>301</height>
     </rect>
    </property>
    <property name="minimumSize">
@@ -113,10 +81,99 @@
    <property name="lineWidth">
     <number>3</number>
    </property>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>50</y>
+      <width>141</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="formLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Model:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLabel" name="chosenModel">
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Source</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLabel" name="chosenSource">
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QPushButton" name="newButton">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>230</y>
+      <width>141</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>New</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>20</y>
+      <width>121</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Controls</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
   </widget>
   <zorder>frame</zorder>
-  <zorder>label</zorder>
-  <zorder>modelListBox</zorder>
   <zorder>stopButton</zorder>
   <zorder>startButton</zorder>
  </widget>

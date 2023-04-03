@@ -15,7 +15,7 @@ def run_yolo(model):
     model = YOLO(model)
 
     #Choose capture device. 0 is the default for webcam.
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture("test50.mp4")
     if not cap.isOpened():
         print("Cannot open camera")
         exit()

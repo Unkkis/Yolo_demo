@@ -84,7 +84,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.startButton.clicked.connect(self.start_button_clicked)
         self.stopButton.clicked.connect(self.stop_button_clicked)
 
-        models = find_models()
+        models = find_files()
         for x in models:
             self.modelList.addItem(x)
         #self.yolo_model = "yolov8s.pt"

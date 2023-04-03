@@ -17,7 +17,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractButton, QApplication, QComboBox, QDialog,
     QDialogButtonBox, QFormLayout, QGridLayout, QLabel,
-    QPushButton, QSizePolicy, QWidget)
+    QLineEdit, QPushButton, QSizePolicy, QWidget)
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
@@ -29,39 +29,39 @@ class Ui_Dialog(object):
         self.buttonBox.setGeometry(QRect(50, 310, 341, 32))
         self.buttonBox.setOrientation(Qt.Horizontal)
         self.buttonBox.setStandardButtons(QDialogButtonBox.Ok)
-        self.widget = QWidget(Dialog)
-        self.widget.setObjectName(u"widget")
-        self.widget.setGeometry(QRect(40, 40, 331, 91))
-        self.gridLayout = QGridLayout(self.widget)
+        self.layoutWidget = QWidget(Dialog)
+        self.layoutWidget.setObjectName(u"layoutWidget")
+        self.layoutWidget.setGeometry(QRect(40, 40, 331, 91))
+        self.gridLayout = QGridLayout(self.layoutWidget)
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
-        self.label_3 = QLabel(self.widget)
+        self.label_3 = QLabel(self.layoutWidget)
         self.label_3.setObjectName(u"label_3")
 
         self.gridLayout.addWidget(self.label_3, 0, 0, 1, 1)
 
-        self.pushButton = QPushButton(self.widget)
+        self.pushButton = QPushButton(self.layoutWidget)
         self.pushButton.setObjectName(u"pushButton")
 
         self.gridLayout.addWidget(self.pushButton, 1, 1, 1, 1)
 
-        self.label_2 = QLabel(self.widget)
+        self.label_2 = QLabel(self.layoutWidget)
         self.label_2.setObjectName(u"label_2")
 
         self.gridLayout.addWidget(self.label_2, 1, 0, 1, 1)
 
-        self.whatIsYoloButton = QPushButton(self.widget)
+        self.whatIsYoloButton = QPushButton(self.layoutWidget)
         self.whatIsYoloButton.setObjectName(u"whatIsYoloButton")
 
         self.gridLayout.addWidget(self.whatIsYoloButton, 0, 1, 1, 1)
 
-        self.widget1 = QWidget(Dialog)
-        self.widget1.setObjectName(u"widget1")
-        self.widget1.setGeometry(QRect(40, 180, 331, 101))
-        self.formLayout = QFormLayout(self.widget1)
+        self.layoutWidget1 = QWidget(Dialog)
+        self.layoutWidget1.setObjectName(u"layoutWidget1")
+        self.layoutWidget1.setGeometry(QRect(40, 180, 331, 121))
+        self.formLayout = QFormLayout(self.layoutWidget1)
         self.formLayout.setObjectName(u"formLayout")
         self.formLayout.setContentsMargins(0, 0, 0, 0)
-        self.label_4 = QLabel(self.widget1)
+        self.label_4 = QLabel(self.layoutWidget1)
         self.label_4.setObjectName(u"label_4")
         font = QFont()
         font.setPointSize(10)
@@ -70,25 +70,35 @@ class Ui_Dialog(object):
 
         self.formLayout.setWidget(0, QFormLayout.SpanningRole, self.label_4)
 
-        self.modelListBox = QComboBox(self.widget1)
+        self.modelListBox = QComboBox(self.layoutWidget1)
         self.modelListBox.setObjectName(u"modelListBox")
 
         self.formLayout.setWidget(1, QFormLayout.FieldRole, self.modelListBox)
 
-        self.label = QLabel(self.widget1)
+        self.label = QLabel(self.layoutWidget1)
         self.label.setObjectName(u"label")
 
         self.formLayout.setWidget(1, QFormLayout.LabelRole, self.label)
 
-        self.label_5 = QLabel(self.widget1)
+        self.label_5 = QLabel(self.layoutWidget1)
         self.label_5.setObjectName(u"label_5")
 
         self.formLayout.setWidget(2, QFormLayout.LabelRole, self.label_5)
 
-        self.sourceListBox = QComboBox(self.widget1)
+        self.sourceListBox = QComboBox(self.layoutWidget1)
         self.sourceListBox.setObjectName(u"sourceListBox")
 
         self.formLayout.setWidget(2, QFormLayout.FieldRole, self.sourceListBox)
+
+        self.label_youtube = QLabel(self.layoutWidget1)
+        self.label_youtube.setObjectName(u"label_youtube")
+
+        self.formLayout.setWidget(3, QFormLayout.LabelRole, self.label_youtube)
+
+        self.youtubeURL = QLineEdit(self.layoutWidget1)
+        self.youtubeURL.setObjectName(u"youtubeURL")
+
+        self.formLayout.setWidget(3, QFormLayout.FieldRole, self.youtubeURL)
 
 
         self.retranslateUi(Dialog)
@@ -107,5 +117,6 @@ class Ui_Dialog(object):
         self.label_4.setText(QCoreApplication.translate("Dialog", u"YOLO object detection demo", None))
         self.label.setText(QCoreApplication.translate("Dialog", u"Choose YOLO Model", None))
         self.label_5.setText(QCoreApplication.translate("Dialog", u"Choose Video source", None))
+        self.label_youtube.setText(QCoreApplication.translate("Dialog", u"IInput Youtube URL", None))
     # retranslateUi
 

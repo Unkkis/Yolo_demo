@@ -2,8 +2,8 @@ from glob import glob
 import cv2
 
 #https://docs.python.org/3/library/glob.html
-def find_models():
-    results = glob("./*.pt")
+def find_files(type):
+    results = glob(f"./*.{type}")
 
     models = [ x.replace(".\\", "") for x in results]
     return models
