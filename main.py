@@ -3,7 +3,7 @@
 import sys
 from PySide6.QtWidgets import QVBoxLayout, QLabel, QPushButton, QWidget, QMainWindow, QApplication, QMdiSubWindow, QDialog
 from PySide6.QtCore import QRunnable, Slot, QThreadPool, QThread, Signal, Qt
-from PySide6.QtGui import QPixmap, QImage, QResizeEvent
+from PySide6.QtGui import QPixmap, QImage, QResizeEvent, QDesktopServices
 
 from mainWindow import Ui_MainWindow
 from controls import Ui_controls
@@ -46,6 +46,14 @@ class Setup(QDialog, Ui_Dialog):
             self.sourceListBox.addItem(x)
 
         self.sourceListBox.currentTextChanged.connect(self.checkYoutube)
+
+        self.whatIsYoloButton.clicked.connect(self.yolo_button_clicked)
+        self.pushButton.clicked.connect(self.documentation_button_clicked)
+    
+    def yolo_button_clicked(self):
+        QDesktopServices.openUrl("https://en.wikipedia.org/wiki/Object_detection")
+    def documentation_button_clicked(self):
+        QDesktopServices.openUrl("https://docs.ultralytics.com/")
         
     def checkYoutube(self):
         if self.sourceListBox.currentText() == "Youtube":
