@@ -9,3 +9,7 @@
   pip install ultralytics
 ```
 
+```
+pip install papy
+```
+
