@@ -21,7 +21,7 @@ class Worker(QThread):
         self.videoWidth = width
         self.videoHeight = height
                 
-        print("model: ", model, "Sourde: ", source)
+        print("model: ", model, "Source: ", source)
 
     @Slot() 
     def run(self):
@@ -105,4 +105,3 @@ class Worker(QThread):
     def change_video_size(self, width, height):
         self.videoHeight = height
         self.videoWidth = width
-        print(width, height)
