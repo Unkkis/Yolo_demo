@@ -12,15 +12,15 @@ class Worker(QThread):
     changePixmap = Signal(QPixmap)
     sendResults = Signal(list)
 
-    def __init__(self, model, source, url, parent=None):
+    def __init__(self, model, source, url, width, height, parent=None):
         QThread.__init__(self, parent=parent)
         self.yolo_is_running = True
         self.model = model
         self.source = source
         self.url = url
-        self.videoWidth = 640
-        self.videoHeight = 480
-        
+        self.videoWidth = width
+        self.videoHeight = height
+                
         print("model: ", model, "Sourde: ", source)
 
     @Slot() 
@@ -28,6 +28,7 @@ class Worker(QThread):
     # https://docs.opencv.org/4.x/dd/d43/tutorial_py_video_display.html
     # https://docs.ultralytics.com/modes/predict/#streaming-source-for-loop
     # https://pypi.org/project/pafy/
+    # https://stackoverflow.com/questions/43032163/how-to-read-youtube-live-stream-using-opencv-python
 
         model = YOLO(self.model)
         source = self.source
@@ -86,8 +87,9 @@ class Worker(QThread):
         cap.release()
         cv2.destroyAllWindows()
 
+        #https://pythonbasics.org/pyqt-qpixmap/
         img = QPixmap("./kampus.jpg")
-        p = img.scaled(self.videoWidth, self.videoHeight, Qt.KeepAspectRatio)
+        p = img.scaled(640, 480, Qt.KeepAspectRatio)
         self.changePixmap.emit(p)
         self.yolo_is_running = True
     
@@ -96,8 +98,11 @@ class Worker(QThread):
         self.yolo_is_running = False
         self.wait()
 
+    #https://stackoverflow.com/questions/71234281/opencv-video-feed-automatic-resizing-with-pyqt5
+    #https://stackoverflow.com/questions/74095602/how-to-adjust-video-to-widget-size-in-qt-python
+    #https://forum.qt.io/topic/110955/layout-signal-when-resized/3
     @Slot()
     def change_video_size(self, width, height):
-        self.videoHeight = width
-        self.videoWidth = height
+        self.videoHeight = height
+        self.videoWidth = width
         print(width, height)

@@ -1,4 +1,8 @@
 #https://www.pythonguis.com/tutorials/pyside6-first-steps-qt-designer/
+#https://doc.qt.io/qtforpython-5/PySide2/QtWidgets/QMainWindow.html
+#https://doc.qt.io/qtforpython-5/PySide2/QtWidgets/
+#https://doc.qt.io/qtforpython/PySide6/QtGui/QDesktopServices.html
+#https://doc.qt.io/qt-6/widget-classes.html#basic-widget-classes
 
 import sys
 from PySide6.QtWidgets import QVBoxLayout, QLabel, QPushButton, QWidget, QMainWindow, QApplication, QMdiSubWindow, QDialog
@@ -91,9 +95,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.yolo_worker = None
 
         #Setting picture to picturearea
-        img = QPixmap("./kampus.jpg")
-        img = img.scaled(640, 480, Qt.KeepAspectRatio)
-        self.picture.videoFrame.setPixmap(img)
+        self.videoHeight = 640
+        self.videoWidth = 480
+        self.img = QPixmap("./kampus.jpg")
+        self.img = self.img.scaled(self.videoHeight,self.videoWidth, Qt.KeepAspectRatio)
+        self.picture.videoFrame.setPixmap(self.img)
 
         #Showing initial setup dialog
         self.setup = Setup(self)
@@ -127,6 +133,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.videoHeight = self.picture.videoFrame.height()
         if self.yolo_worker != None:
             self.yolo_worker.change_video_size(self.videoWidth, self.videoHeight)
+        
+       # self.img = QPixmap("./kampus.jpg")
+       # self.img.scaled(self.videoHeight,self.videoWidth, Qt.KeepAspectRatio)
+       # self.picture.videoFrame.setPixmap(self.img)
 
         
         
@@ -146,7 +156,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.controls.startButton.setEnabled(False)
         self.controls.stopButton.setEnabled(True)
         self.controls.newButton.setEnabled(False)
-        self.yolo_worker = Worker(self.model, self.source, self.youtubeUrl)
+        self.yolo_worker = Worker(self.model, self.source, self.youtubeUrl, self.videoWidth, self.videoHeight)
         self.yolo_worker.changePixmap.connect(self.picture.videoFrame.setPixmap)
         self.yolo_worker.sendResults.connect(self.updateResults)
         self.yolo_worker.start()
