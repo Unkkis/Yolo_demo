@@ -28,6 +28,19 @@ If you want to use your other YOLO models or if you have video files that you wa
 
 Run main.py and enjoy.
 
+## Packaging
+If you want to package this app to executable I've also added  main.spec -file and YOLO default.yaml -file.
+To package first install Pyinstaller (https://pyinstaller.org/en/stable/)
+
+```
+pip install pyinstaller
+```
+
+Then run
+```
+pyinstaller main.spec
+```
+
 
 
 

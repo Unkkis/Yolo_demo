@@ -89,7 +89,7 @@ class Worker(QThread):
         cv2.destroyAllWindows()
 
         #https://pythonbasics.org/pyqt-qpixmap/
-        img = QPixmap("./kampus.jpg")
+        img = QPixmap("./logo.jpg")
         p = img.scaled(640, 480, Qt.KeepAspectRatio)
         self.changePixmap.emit(p)
         self.yolo_is_running = True

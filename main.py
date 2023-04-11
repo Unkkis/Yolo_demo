@@ -7,7 +7,7 @@
 import sys
 from PySide6.QtWidgets import QVBoxLayout, QLabel, QPushButton, QWidget, QMainWindow, QApplication, QMdiSubWindow, QDialog
 from PySide6.QtCore import QRunnable, Slot, QThreadPool, QThread, Signal, Qt
-from PySide6.QtGui import QPixmap, QImage, QResizeEvent, QDesktopServices
+from PySide6.QtGui import QPixmap, QImage, QResizeEvent, QDesktopServices, QIcon
 
 from mainWindow import Ui_MainWindow
 from controls import Ui_controls
@@ -95,7 +95,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
         self.setupUi(self)
-        #self.showMaximized()
+        self.showMaximized()
 
         #Adding controls widget
         self.controls = Controls(self)
@@ -121,7 +121,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         #Setting picture to picturearea
         self.videoHeight = 640
         self.videoWidth = 480
-        self.img = QPixmap("./kampus.jpg")
+        self.img = QPixmap("./logo.jpg")
         self.img = self.img.scaled(self.videoHeight,self.videoWidth, Qt.KeepAspectRatio)
         self.picture.videoFrame.setPixmap(self.img)
 
@@ -153,6 +153,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.picture.videoFrame.resizeEvent = self.video_resize
 
         self.confidenceTreshold = self.setup.confidenceSlider.value()
+
+        self.videoHeight = self.picture.videoFrame.height()
+        self.videoWidth = self.picture.videoFrame.width()
 
     def video_resize(self, resizeEvent:QResizeEvent):
         self.videoWidth = self.picture.videoFrame.width()
@@ -199,6 +202,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     
 
 app = QApplication(sys.argv)
+app.setWindowIcon(QIcon('logo.ico'))
 
 window = MainWindow()
 window.show()
