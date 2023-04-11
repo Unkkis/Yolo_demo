@@ -15,10 +15,10 @@ For youtube videos, PaFy (https://pythonhosted.org/pafy/) is used.
 
 - Have to have YOLOv8 (and all requirements for ultralytics package etc. PyTorch and OpenCv) installed
 ```
-  pip install ultralytics
+pip install ultralytics
 ```
 
-PaFy is needed for youtube videos
+- PaFy is needed for youtube videos
 ```
 pip install pafy
 ```
