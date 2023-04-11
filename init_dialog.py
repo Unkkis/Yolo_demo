@@ -17,7 +17,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractButton, QApplication, QComboBox, QDialog,
     QDialogButtonBox, QFormLayout, QGridLayout, QLabel,
-    QLineEdit, QPushButton, QSizePolicy, QWidget)
+    QLineEdit, QPushButton, QSizePolicy, QSlider,
+    QWidget)
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
@@ -57,7 +58,7 @@ class Ui_Dialog(object):
 
         self.layoutWidget1 = QWidget(Dialog)
         self.layoutWidget1.setObjectName(u"layoutWidget1")
-        self.layoutWidget1.setGeometry(QRect(40, 180, 331, 121))
+        self.layoutWidget1.setGeometry(QRect(40, 150, 331, 160))
         self.formLayout = QFormLayout(self.layoutWidget1)
         self.formLayout.setObjectName(u"formLayout")
         self.formLayout.setContentsMargins(0, 0, 0, 0)
@@ -70,15 +71,15 @@ class Ui_Dialog(object):
 
         self.formLayout.setWidget(0, QFormLayout.SpanningRole, self.label_4)
 
-        self.modelListBox = QComboBox(self.layoutWidget1)
-        self.modelListBox.setObjectName(u"modelListBox")
-
-        self.formLayout.setWidget(1, QFormLayout.FieldRole, self.modelListBox)
-
         self.label = QLabel(self.layoutWidget1)
         self.label.setObjectName(u"label")
 
         self.formLayout.setWidget(1, QFormLayout.LabelRole, self.label)
+
+        self.modelListBox = QComboBox(self.layoutWidget1)
+        self.modelListBox.setObjectName(u"modelListBox")
+
+        self.formLayout.setWidget(1, QFormLayout.FieldRole, self.modelListBox)
 
         self.label_5 = QLabel(self.layoutWidget1)
         self.label_5.setObjectName(u"label_5")
@@ -100,6 +101,25 @@ class Ui_Dialog(object):
 
         self.formLayout.setWidget(3, QFormLayout.FieldRole, self.youtubeURL)
 
+        self.label_6 = QLabel(self.layoutWidget1)
+        self.label_6.setObjectName(u"label_6")
+
+        self.formLayout.setWidget(4, QFormLayout.LabelRole, self.label_6)
+
+        self.confidenceSlider = QSlider(self.layoutWidget1)
+        self.confidenceSlider.setObjectName(u"confidenceSlider")
+        self.confidenceSlider.setValue(50)
+        self.confidenceSlider.setSliderPosition(50)
+        self.confidenceSlider.setTracking(True)
+        self.confidenceSlider.setOrientation(Qt.Horizontal)
+        self.confidenceSlider.setInvertedAppearance(False)
+        self.confidenceSlider.setInvertedControls(False)
+
+        self.formLayout.setWidget(4, QFormLayout.FieldRole, self.confidenceSlider)
+
+        self.confidenceLabel = QLabel(Dialog)
+        self.confidenceLabel.setObjectName(u"confidenceLabel")
+        self.confidenceLabel.setGeometry(QRect(380, 260, 49, 16))
 
         self.retranslateUi(Dialog)
         self.buttonBox.accepted.connect(Dialog.accept)
@@ -115,8 +135,25 @@ class Ui_Dialog(object):
         self.label_2.setText(QCoreApplication.translate("Dialog", u"YOLO Documentation", None))
         self.whatIsYoloButton.setText(QCoreApplication.translate("Dialog", u"Check Wikipedia", None))
         self.label_4.setText(QCoreApplication.translate("Dialog", u"YOLO object detection demo", None))
+#if QT_CONFIG(tooltip)
+        self.label.setToolTip(QCoreApplication.translate("Dialog", u"Choose from available YOLO models", None))
+#endif // QT_CONFIG(tooltip)
         self.label.setText(QCoreApplication.translate("Dialog", u"Choose YOLO Model", None))
+#if QT_CONFIG(tooltip)
+        self.label_5.setToolTip(QCoreApplication.translate("Dialog", u"Choose source for video", None))
+#endif // QT_CONFIG(tooltip)
         self.label_5.setText(QCoreApplication.translate("Dialog", u"Choose Video source", None))
+#if QT_CONFIG(tooltip)
+        self.label_youtube.setToolTip(QCoreApplication.translate("Dialog", u"Input URL to Youtube video", None))
+#endif // QT_CONFIG(tooltip)
         self.label_youtube.setText(QCoreApplication.translate("Dialog", u"IInput Youtube URL", None))
+#if QT_CONFIG(tooltip)
+        self.label_6.setToolTip(QCoreApplication.translate("Dialog", u"Draw rectangles only when confidence score is above this treshold. 50% is the norm.", None))
+#endif // QT_CONFIG(tooltip)
+        self.label_6.setText(QCoreApplication.translate("Dialog", u"Confidence treshold", None))
+#if QT_CONFIG(tooltip)
+        self.confidenceSlider.setToolTip(QCoreApplication.translate("Dialog", u"Draw rectangles only when confidence score is above this treshold. 50% is the norm.", None))
+#endif // QT_CONFIG(tooltip)
+        self.confidenceLabel.setText(QCoreApplication.translate("Dialog", u"0%", None))
     # retranslateUi
 

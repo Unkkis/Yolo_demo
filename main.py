@@ -39,20 +39,44 @@ class Setup(QDialog, Ui_Dialog):
         self.label_youtube.setEnabled(False)
         self.youtubeURL.setEnabled(False)
 
+        #Fetch available models
         models = find_files("pt")
         for x in models:
             self.modelListBox.addItem(x)
 
+        #Add sources and fetch available videos
         self.sourceListBox.addItem("Webcam")
         self.sourceListBox.addItem("Youtube")
-        sources = find_files("mp4")
-        for x in sources:
-            self.sourceListBox.addItem(x)
+        videoFormats = [
+            "asf",
+            "avi",
+            "gif",
+            "m4v",
+            "mkv",
+            "mov",
+            "mp4",
+            "mpeg",
+            "mpg",
+            "ts",
+            "wmv",
+            "webm"
+        ]
+        for format in videoFormats:
+            sources = find_files(format)
+            for video in sources:
+                self.sourceListBox.addItem(video)
+
+        self.confidenceLabel.setText(str(self.confidenceSlider.value()) + "%")
+        self.confidenceSlider.valueChanged.connect(self.slider_moved)
 
         self.sourceListBox.currentTextChanged.connect(self.checkYoutube)
 
         self.whatIsYoloButton.clicked.connect(self.yolo_button_clicked)
         self.pushButton.clicked.connect(self.documentation_button_clicked)
+    
+    def slider_moved(self):
+        print(self.confidenceSlider.value())
+        self.confidenceLabel.setText(str(self.confidenceSlider.value()) + "%")
     
     def yolo_button_clicked(self):
         QDesktopServices.openUrl("https://en.wikipedia.org/wiki/Object_detection")
@@ -128,6 +152,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         self.picture.videoFrame.resizeEvent = self.video_resize
 
+        self.confidenceTreshold = self.setup.confidenceSlider.value()
+
     def video_resize(self, resizeEvent:QResizeEvent):
         self.videoWidth = self.picture.videoFrame.width()
         self.videoHeight = self.picture.videoFrame.height()
@@ -156,7 +182,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.controls.startButton.setEnabled(False)
         self.controls.stopButton.setEnabled(True)
         self.controls.newButton.setEnabled(False)
-        self.yolo_worker = Worker(self.model, self.source, self.youtubeUrl, self.videoWidth, self.videoHeight)
+        self.yolo_worker = Worker(self.model, self.confidenceTreshold, self.source, self.youtubeUrl, self.videoWidth, self.videoHeight)
         self.yolo_worker.changePixmap.connect(self.picture.videoFrame.setPixmap)
         self.yolo_worker.sendResults.connect(self.updateResults)
         self.yolo_worker.start()

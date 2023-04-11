@@ -94,6 +94,9 @@
     </item>
     <item row="1" column="0">
      <widget class="QLabel" name="label">
+      <property name="toolTip">
+       <string>Choose from available YOLO models</string>
+      </property>
       <property name="text">
        <string>Choose YOLO Model</string>
       </property>
@@ -104,6 +107,9 @@
     </item>
     <item row="2" column="0">
      <widget class="QLabel" name="label_5">
+      <property name="toolTip">
+       <string>Choose source for video</string>
+      </property>
       <property name="text">
        <string>Choose Video source</string>
       </property>
@@ -114,6 +120,9 @@
     </item>
     <item row="3" column="0">
      <widget class="QLabel" name="label_youtube">
+      <property name="toolTip">
+       <string>Input URL to Youtube video</string>
+      </property>
       <property name="text">
        <string>IInput Youtube URL</string>
       </property>
@@ -124,6 +133,9 @@
     </item>
     <item row="4" column="0">
      <widget class="QLabel" name="label_6">
+      <property name="toolTip">
+       <string>Draw rectangles only when confidence score is above this treshold. 50% is the norm.</string>
+      </property>
       <property name="text">
        <string>Confidence treshold</string>
       </property>
@@ -131,11 +143,14 @@
     </item>
     <item row="4" column="1">
      <widget class="QSlider" name="confidenceSlider">
+      <property name="toolTip">
+       <string>Draw rectangles only when confidence score is above this treshold. 50% is the norm.</string>
+      </property>
       <property name="value">
-       <number>0</number>
+       <number>50</number>
       </property>
       <property name="sliderPosition">
-       <number>0</number>
+       <number>50</number>
       </property>
       <property name="tracking">
        <bool>true</bool>
@@ -163,7 +178,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>0</string>
+    <string>0%</string>
    </property>
   </widget>
  </widget>

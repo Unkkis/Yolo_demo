@@ -12,16 +12,17 @@ class Worker(QThread):
     changePixmap = Signal(QPixmap)
     sendResults = Signal(list)
 
-    def __init__(self, model, source, url, width, height, parent=None):
+    def __init__(self, model, confidence, source, url, width, height, parent=None):
         QThread.__init__(self, parent=parent)
         self.yolo_is_running = True
         self.model = model
+        self.confidenceScore = confidence/100
         self.source = source
         self.url = url
         self.videoWidth = width
         self.videoHeight = height
                 
-        print("model: ", model, "Source: ", source)
+        print("model: ", model, "Confidence: ", self.confidenceScore, "Source: ", source)
 
     @Slot() 
     def run(self):
@@ -57,7 +58,7 @@ class Worker(QThread):
             
             # if frame is read correctly
             if ret :
-                results = model.predict(frame)
+                results = model.predict(frame, conf=self.confidenceScore)
                 
 
                 img = draw_boxes(frame, results[0])
