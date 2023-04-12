@@ -27,15 +27,16 @@ pip install ultralytics
 pip install pafy
 ```
 
-Youtube-DL is needed for Youtube content. As ow writing, only version 2020.12.2 seems to work
+- Youtube-DL is needed for Youtube content. As ow writing, only version 2020.12.2 seems to work
 ```
 pip install youtube_dl==2020.12.2
 ```
 
 ## Usage
-If you want to use your other YOLO models or if you have video files that you want to use, copy them to the root of the project file. Program does a search for .pt files (yolo models) and video files on startup and presents them on the list.
-
+Clone/unzip this repository to your computer and install things above.
 Run main.py and enjoy.
+
+If you want to use your other YOLO models or if you have video files that you want to use, copy them to the root folder of the project. Program does a search for .pt files (yolo models) and video files on startup and presents them on the list.
 
 ## Packaging
 If you want to package this app to executable I've also added  main.spec -file and YOLO default.yaml -file.
