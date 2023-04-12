@@ -12,6 +12,10 @@ For youtube videos, PaFy (https://pythonhosted.org/pafy/) is used.
 ## Prequisites
 - Have to have Python (3.7 ->) installed (https://www.python.org/downloads/)
 
+Program uses QT for graphical interface and using Pyside6 as binding, so Pyside6 is needed
+```
+pip install pyside6
+```
 
 - Have to have YOLOv8 (and all requirements for ultralytics package etc. PyTorch and OpenCv) installed
 ```
