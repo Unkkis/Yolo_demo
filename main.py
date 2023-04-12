@@ -5,9 +5,9 @@
 #https://doc.qt.io/qt-6/widget-classes.html#basic-widget-classes
 
 import sys
-from PySide6.QtWidgets import QVBoxLayout, QLabel, QPushButton, QWidget, QMainWindow, QApplication, QMdiSubWindow, QDialog
-from PySide6.QtCore import QRunnable, Slot, QThreadPool, QThread, Signal, Qt
-from PySide6.QtGui import QPixmap, QImage, QResizeEvent, QDesktopServices, QIcon
+from PySide6.QtWidgets import QWidget, QMainWindow, QApplication, QDialog
+from PySide6.QtCore import Slot, Qt
+from PySide6.QtGui import QPixmap, QResizeEvent, QDesktopServices, QIcon
 
 from mainWindow import Ui_MainWindow
 from controls import Ui_controls
@@ -162,12 +162,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.videoHeight = self.picture.videoFrame.height()
         if self.yolo_worker != None:
             self.yolo_worker.change_video_size(self.videoWidth, self.videoHeight)
-        
-       # self.img = QPixmap("./kampus.jpg")
-       # self.img.scaled(self.videoHeight,self.videoWidth, Qt.KeepAspectRatio)
-       # self.picture.videoFrame.setPixmap(self.img)
-
-        
+              
         
     @Slot(list)
     def updateResults(self, result_list):
