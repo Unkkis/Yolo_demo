@@ -45,7 +45,10 @@ class Worker(QThread):
         cap = cv2.VideoCapture(source)
         if not cap.isOpened():
             print("Cannot open camera")
-            exit()
+            sum_output = ["ERROR", "Cannot open camera"]
+            self.sendResults.emit(sum_output)
+            cap.release()
+            cv2.destroyAllWindows()
 
         while True:
             # Capture frame-by-frame
@@ -54,6 +57,10 @@ class Worker(QThread):
             # if frame is not read correctly
             if not ret:
                 print("Can't receive frame (stream end?). Exiting ...")
+                sum_output = ["ERROR", "Can't receive frame (stream end?). Exiting ..."]
+                self.sendResults.emit(sum_output)
+                cap.release()
+                cv2.destroyAllWindows()
                 break
             
             # if frame is read correctly

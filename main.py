@@ -173,10 +173,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def updateResults(self, result_list):
         
         text = ""
-        for x in result_list:
-            class_name, confidence = x           
-            confidence = "{0:.0%}".format(confidence)
-            text = text + f"{confidence} {class_name}" + "\n"
+        if result_list[0] == "ERROR":
+            text = f"{result_list[0]}: {result_list[1]}"
+        else:
+            for x in result_list:
+                class_name, confidence = x               
+                confidence = "{0:.0%}".format(confidence)
+                text = text + f"{confidence} {class_name}" + "\n"
+
         self.picture.resultsFrame.setText(text)
             
             
