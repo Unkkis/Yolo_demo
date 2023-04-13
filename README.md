@@ -17,17 +17,17 @@ Program uses QT for graphical interface and using Pyside6 as binding, so Pyside6
 pip install pyside6
 ```
 
-- Have to have YOLOv8 (and all requirements for ultralytics package etc. PyTorch and OpenCv) installed
+- Have to have YOLOv8 (https://docs.ultralytics.com/) (and all requirements for ultralytics package etc. PyTorch and OpenCv) installed
 ```
 pip install ultralytics
 ```
 
-- PaFy is needed for youtube videos
+- PaFy (https://pypi.org/project/pafy/) is needed for youtube videos
 ```
 pip install pafy
 ```
 
-- Youtube-DL is needed for Youtube content. As ow writing, only version 2020.12.2 seems to work
+- Youtube-DL (https://youtube-dl.org/) is needed for Youtube content. As ow writing, only version 2020.12.2 seems to work
 ```
 pip install youtube_dl==2020.12.2
 ```
