@@ -12,7 +12,7 @@ class Worker(QThread):
     changePixmap = Signal(QPixmap)
     sendResults = Signal(list)
 
-    def __init__(self, model, confidence, source, url, width, height, parent=None):
+    def __init__(self, model, confidence, source, url, width, height, YOLO_plotting, parent=None):
         QThread.__init__(self, parent=parent)
         self.yolo_is_running = True
         self.model = model
@@ -21,6 +21,7 @@ class Worker(QThread):
         self.url = url
         self.videoWidth = width
         self.videoHeight = height
+        self.YOLO_plotting = YOLO_plotting
                 
         print("model: ", model, "Confidence: ", self.confidenceScore, "Source: ", source)
 
@@ -65,13 +66,25 @@ class Worker(QThread):
             
             # if frame is read correctly
             if ret :
-                results = model.predict(frame, conf=self.confidenceScore)
+                results = model(frame, conf=self.confidenceScore)
                 
 
-                img = draw_boxes(frame, results[0])
+                
+                # Visualize the results on the frame
+                if self.YOLO_plotting == True:
+                    # multicolor boxes
+                    annotated_frame = results[0].plot()
+                else: 
+                    # red and green boxes
+                    img = draw_boxes(frame, results[0])
+
 
                 #https://stackoverflow.com/questions/57204782/show-an-opencv-image-with-pyqt5
-                rgbImage = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+                
+                if self.YOLO_plotting == True:
+                    rgbImage = cv2.cvtColor(annotated_frame, cv2.COLOR_BGR2RGB)
+                else: 
+                    rgbImage = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
                 convertToQtFormat = QImage(rgbImage.data, rgbImage.shape[1], rgbImage.shape[0], QImage.Format.Format_RGB888)
                 convertToQtFormat = QPixmap.fromImage(convertToQtFormat)
 

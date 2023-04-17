@@ -147,6 +147,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.youtubeUrl = ""
             self.controls.youtubeUrl.setText(self.youtubeUrl)
             self.controls.youtubeLabel.setVisible(False)
+        
+        self.YOLO_plotting = self.setup.radioButtonYOLOPlotting.isChecked()
+        print(self.setup.radioButtonYOLOPlotting.isChecked())
        
         self.controls.startButton.setEnabled(True)        
         
@@ -156,6 +159,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.videoHeight = self.picture.videoFrame.height()
         self.videoWidth = self.picture.videoFrame.width()
+
 
     def video_resize(self, resizeEvent:QResizeEvent):
         self.videoWidth = self.picture.videoFrame.width()
@@ -184,7 +188,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.controls.startButton.setEnabled(False)
         self.controls.stopButton.setEnabled(True)
         self.controls.newButton.setEnabled(False)
-        self.yolo_worker = Worker(self.model, self.confidenceTreshold, self.source, self.youtubeUrl, self.videoWidth, self.videoHeight)
+        self.yolo_worker = Worker(self.model, self.confidenceTreshold, self.source, self.youtubeUrl, self.videoWidth, self.videoHeight, self.YOLO_plotting)
         self.yolo_worker.changePixmap.connect(self.picture.videoFrame.setPixmap)
         self.yolo_worker.sendResults.connect(self.updateResults)
         self.yolo_worker.start()

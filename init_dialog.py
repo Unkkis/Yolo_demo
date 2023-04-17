@@ -17,17 +17,17 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractButton, QApplication, QComboBox, QDialog,
     QDialogButtonBox, QFormLayout, QGridLayout, QLabel,
-    QLineEdit, QPushButton, QSizePolicy, QSlider,
-    QWidget)
+    QLineEdit, QPushButton, QRadioButton, QSizePolicy,
+    QSlider, QWidget)
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         if not Dialog.objectName():
             Dialog.setObjectName(u"Dialog")
-        Dialog.resize(435, 356)
+        Dialog.resize(431, 402)
         self.buttonBox = QDialogButtonBox(Dialog)
         self.buttonBox.setObjectName(u"buttonBox")
-        self.buttonBox.setGeometry(QRect(50, 310, 341, 32))
+        self.buttonBox.setGeometry(QRect(40, 340, 341, 32))
         self.buttonBox.setOrientation(Qt.Horizontal)
         self.buttonBox.setStandardButtons(QDialogButtonBox.Ok)
         self.layoutWidget = QWidget(Dialog)
@@ -58,7 +58,7 @@ class Ui_Dialog(object):
 
         self.layoutWidget1 = QWidget(Dialog)
         self.layoutWidget1.setObjectName(u"layoutWidget1")
-        self.layoutWidget1.setGeometry(QRect(40, 150, 331, 160))
+        self.layoutWidget1.setGeometry(QRect(40, 150, 331, 184))
         self.formLayout = QFormLayout(self.layoutWidget1)
         self.formLayout.setObjectName(u"formLayout")
         self.formLayout.setContentsMargins(0, 0, 0, 0)
@@ -117,6 +117,27 @@ class Ui_Dialog(object):
 
         self.formLayout.setWidget(4, QFormLayout.FieldRole, self.confidenceSlider)
 
+        self.radioButtonCustomPlotting = QRadioButton(self.layoutWidget1)
+        self.radioButtonCustomPlotting.setObjectName(u"radioButtonCustomPlotting")
+
+        self.formLayout.setWidget(6, QFormLayout.FieldRole, self.radioButtonCustomPlotting)
+
+        self.radioButtonYOLOPlotting = QRadioButton(self.layoutWidget1)
+        self.radioButtonYOLOPlotting.setObjectName(u"radioButtonYOLOPlotting")
+        self.radioButtonYOLOPlotting.setChecked(True)
+
+        self.formLayout.setWidget(5, QFormLayout.FieldRole, self.radioButtonYOLOPlotting)
+
+        self.label_7 = QLabel(self.layoutWidget1)
+        self.label_7.setObjectName(u"label_7")
+
+        self.formLayout.setWidget(5, QFormLayout.LabelRole, self.label_7)
+
+        self.label_8 = QLabel(self.layoutWidget1)
+        self.label_8.setObjectName(u"label_8")
+
+        self.formLayout.setWidget(6, QFormLayout.LabelRole, self.label_8)
+
         self.confidenceLabel = QLabel(Dialog)
         self.confidenceLabel.setObjectName(u"confidenceLabel")
         self.confidenceLabel.setGeometry(QRect(380, 260, 49, 16))
@@ -154,6 +175,22 @@ class Ui_Dialog(object):
 #if QT_CONFIG(tooltip)
         self.confidenceSlider.setToolTip(QCoreApplication.translate("Dialog", u"Draw rectangles only when confidence score is above this treshold. 50% is the norm.", None))
 #endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(tooltip)
+        self.radioButtonCustomPlotting.setToolTip(QCoreApplication.translate("Dialog", u"<html><head/><body><p>Use plotting where objects with confidence score over 80% are green and under 80% are red.</p></body></html>", None))
+#endif // QT_CONFIG(tooltip)
+        self.radioButtonCustomPlotting.setText(QCoreApplication.translate("Dialog", u"RadioButton", None))
+#if QT_CONFIG(tooltip)
+        self.radioButtonYOLOPlotting.setToolTip(QCoreApplication.translate("Dialog", u"<html><head/><body><p>Use YOLOs built in plotting, where different objects have different colors)</p></body></html>", None))
+#endif // QT_CONFIG(tooltip)
+        self.radioButtonYOLOPlotting.setText(QCoreApplication.translate("Dialog", u"RadioButton", None))
+#if QT_CONFIG(tooltip)
+        self.label_7.setToolTip(QCoreApplication.translate("Dialog", u"<html><head/><body><p>Use YOLOs built in plotting, where different objects have different colors)</p></body></html>", None))
+#endif // QT_CONFIG(tooltip)
+        self.label_7.setText(QCoreApplication.translate("Dialog", u"Use YOLO Plotting", None))
+#if QT_CONFIG(tooltip)
+        self.label_8.setToolTip(QCoreApplication.translate("Dialog", u"<html><head/><body><p>Use plotting where objects with confidence score over 80% are green and under 80% are red.</p></body></html>", None))
+#endif // QT_CONFIG(tooltip)
+        self.label_8.setText(QCoreApplication.translate("Dialog", u"Use Red/Green Plotting", None))
         self.confidenceLabel.setText(QCoreApplication.translate("Dialog", u"0%", None))
     # retranslateUi
 
