@@ -133,11 +133,6 @@ class Ui_Dialog(object):
 
         self.formLayout.setWidget(5, QFormLayout.LabelRole, self.label_7)
 
-        self.label_8 = QLabel(self.layoutWidget1)
-        self.label_8.setObjectName(u"label_8")
-
-        self.formLayout.setWidget(6, QFormLayout.LabelRole, self.label_8)
-
         self.confidenceLabel = QLabel(Dialog)
         self.confidenceLabel.setObjectName(u"confidenceLabel")
         self.confidenceLabel.setGeometry(QRect(380, 260, 49, 16))
@@ -178,19 +173,12 @@ class Ui_Dialog(object):
 #if QT_CONFIG(tooltip)
         self.radioButtonCustomPlotting.setToolTip(QCoreApplication.translate("Dialog", u"<html><head/><body><p>Use plotting where objects with confidence score over 80% are green and under 80% are red.</p></body></html>", None))
 #endif // QT_CONFIG(tooltip)
-        self.radioButtonCustomPlotting.setText(QCoreApplication.translate("Dialog", u"RadioButton", None))
+        self.radioButtonCustomPlotting.setText(QCoreApplication.translate("Dialog", u"Use Red/Green Plotting", None))
 #if QT_CONFIG(tooltip)
         self.radioButtonYOLOPlotting.setToolTip(QCoreApplication.translate("Dialog", u"<html><head/><body><p>Use YOLOs built in plotting, where different objects have different colors)</p></body></html>", None))
 #endif // QT_CONFIG(tooltip)
-        self.radioButtonYOLOPlotting.setText(QCoreApplication.translate("Dialog", u"RadioButton", None))
-#if QT_CONFIG(tooltip)
-        self.label_7.setToolTip(QCoreApplication.translate("Dialog", u"<html><head/><body><p>Use YOLOs built in plotting, where different objects have different colors)</p></body></html>", None))
-#endif // QT_CONFIG(tooltip)
-        self.label_7.setText(QCoreApplication.translate("Dialog", u"Use YOLO Plotting", None))
-#if QT_CONFIG(tooltip)
-        self.label_8.setToolTip(QCoreApplication.translate("Dialog", u"<html><head/><body><p>Use plotting where objects with confidence score over 80% are green and under 80% are red.</p></body></html>", None))
-#endif // QT_CONFIG(tooltip)
-        self.label_8.setText(QCoreApplication.translate("Dialog", u"Use Red/Green Plotting", None))
+        self.radioButtonYOLOPlotting.setText(QCoreApplication.translate("Dialog", u"Use YOLO Plotting", None))
+        self.label_7.setText(QCoreApplication.translate("Dialog", u"Plotting:", None))
         self.confidenceLabel.setText(QCoreApplication.translate("Dialog", u"0%", None))
     # retranslateUi
 
