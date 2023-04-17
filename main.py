@@ -148,6 +148,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.controls.youtubeUrl.setText(self.youtubeUrl)
             self.controls.youtubeLabel.setVisible(False)
         
+        try: 
+            self.picture.isVisible() == True
+        except:
+            self.picture = Picture(self)
+            self.mdiArea.addSubWindow(self.picture)
+            self.picture.showMaximized()
+            self.videoHeight = 640
+            self.videoWidth = 480
+            self.img = QPixmap("./logo.jpg")
+            self.img = self.img.scaled(self.videoHeight,self.videoWidth, Qt.KeepAspectRatio)
+            self.picture.videoFrame.setPixmap(self.img)
+        
         self.YOLO_plotting = self.setup.radioButtonYOLOPlotting.isChecked()
        
         self.controls.startButton.setEnabled(True)        
@@ -193,7 +205,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.picture = Picture(self)
             self.mdiArea.addSubWindow(self.picture)
             self.picture.showMaximized()
-        print(self.picture.isVisible())
         self.yolo_worker = Worker(self.model, self.confidenceTreshold, self.source, self.youtubeUrl, self.videoWidth, self.videoHeight, self.YOLO_plotting)
         self.yolo_worker.changePixmap.connect(self.picture.videoFrame.setPixmap)
         self.yolo_worker.sendResults.connect(self.updateResults)
