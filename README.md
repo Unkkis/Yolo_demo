@@ -13,9 +13,8 @@ For youtube videos, PaFy (https://pythonhosted.org/pafy/) is used.
 - Have to have Python (3.7 ->) installed (https://www.python.org/downloads/)
 
 ## Usage
-Clone/unzip this repository to your computer and install things above.
+Clone/unzip this repository to your computer and install requirements:
 
-First:
 ``` 
 pip install -r requirements.txt 
 ```
