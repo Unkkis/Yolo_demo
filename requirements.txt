@@ -1,0 +1,7 @@
+# Requirements for YOLO-demo project
+# Usage: pip install -r requirements.txt
+
+pyside6
+ultralytics
+pafy
+youtube_dl==2020.12.2

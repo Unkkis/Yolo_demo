@@ -67,9 +67,7 @@ class Worker(QThread):
             # if frame is read correctly
             if ret :
                 results = model(frame, conf=self.confidenceScore)
-                
-
-                
+                              
                 # Visualize the results on the frame
                 if self.YOLO_plotting == True:
                     # multicolor boxes

@@ -12,6 +12,22 @@ For youtube videos, PaFy (https://pythonhosted.org/pafy/) is used.
 ## Prequisites
 - Have to have Python (3.7 ->) installed (https://www.python.org/downloads/)
 
+## Usage
+Clone/unzip this repository to your computer and install things above.
+
+First:
+``` 
+pip install -r requirements.txt 
+```
+
+Then:
+Run main.py and enjoy.
+
+If you want to use your other YOLO models or if you have video files that you want to use, copy them to the root folder of the project. Program does a search for .pt files (yolo models) and video files on startup and presents them on the list.
+
+
+## Requirements includes:
+
 Program uses QT for graphical interface and using Pyside6 as binding, so Pyside6 is needed
 ```
 pip install pyside6
@@ -31,12 +47,6 @@ pip install pafy
 ```
 pip install youtube_dl==2020.12.2
 ```
-
-## Usage
-Clone/unzip this repository to your computer and install things above.
-Run main.py and enjoy.
-
-If you want to use your other YOLO models or if you have video files that you want to use, copy them to the root folder of the project. Program does a search for .pt files (yolo models) and video files on startup and presents them on the list.
 
 ## Packaging
 If you want to package this app to executable I've also added  main.spec -file and YOLO default.yaml -file.
