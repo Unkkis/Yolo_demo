@@ -21,9 +21,7 @@ pip install -r requirements.txt
 ```
 
 Then:
-```
-python main.py
-``` 
+run main.py
 and enjoy.
 
 If you want to use your other YOLO models or if you have video files that you want to use, copy them to the root folder of the project. Program does a search for .pt files (yolo models) and video files on startup and presents them on the list.
