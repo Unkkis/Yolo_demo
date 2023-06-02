@@ -1,7 +1,8 @@
 # Yolo_demo
 
 This is a project made to Haaga-Helia University of applied sciences (https://www.haaga-helia.fi/).
-Goal was to make a application that could demo YOLO object detection. Application that could be installed to a computer and run to show how YOLO finds objects from a video.
+Goal was to make a application that could demo YOLO object detection. Application that could be installed to a computer and run to show how YOLO finds objects from a video.  
+Installer file for the Windows version of the app can be found from https://1drv.ms/u/s!Ah9ki2I7enFb3juieJmlwuWracxQ?e=8E5eTQ
 
 ## Application
 Application is made to use object detection model YOLOv8 (https://docs.ultralytics.com/).
